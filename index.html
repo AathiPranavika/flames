@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+<style>
+    body{
+        background-image:url("fl2.jpg");
+        background-size: cover;
+    }
+    #h{
+        border:none;
+        padding: 0;
+        width:500px;
+        height:500px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 100px;
+        margin-bottom: auto;
+         background-color:transparent;
+        backdrop-filter:blur(5px);
+        background-position: center center;
+        background-attachment: fixed;
+        border-radius: 40px;
+    }
+    #man{
+        font-size: 40px;
+        letter-spacing: 5px;
+        padding:10px;
+        color:#1ba6f1;
+        margin-top: 0.2px;
+        font-family:  "Audiowide", sans-serif;
+        transition: transform 2s ease;
+    }
+    #man:hover
+    {
+        transform: rotateY(360deg)
+    }
+    #wal,#one{
+        padding:10px;
+        margin: 20px;
+        border-radius: 15px;
+        border: none;
+        width:200px;
+        height:20px;
+        font-size: 15px;
+    }
+    #i{
+        margin-top:2px;
+    }
+    ::placeholder{
+        color: rgb(135, 135, 135);
+    }
+    button{
+        padding:10px;
+        margin-top: 40px;
+        border: none;
+        border-radius: 0px;
+        background-color:#95cfef;
+        color:black;
+        width:150px;
+        height:40px;
+        letter-spacing: 2px;
+    }
+    input:hover{
+        box-shadow: 0 0 15px rgb(15, 191, 239);
+       text-shadow: 0 0 5px wrgb(248, 148, 199);
+       border:none;
+    }
+    button:hover{
+        width:170px;
+        height:60px;
+       color: #f3f3f4;
+       box-shadow: 0 0 40px white;
+       text-shadow: 0 0 5px #ef7ba3;
+       border-radius: 10px;
+    }
+    #res{
+        font-family:"Audiowide", sans-serif ;
+        margin:50px;
+        color:#1ba6f1;
+        font-size: 36px;
+    }
+    @media (max-width:390px)
+    {
+        body{
+            height:350px;
+            width:360px;
+            background-size:cover;
+        }
+        #h{
+        border:none;
+        padding: 0;
+        width:350px;
+        height:500px;
+        margin-top: 120px;
+    }
+    #man{
+        font-size: 30px;
+        text-align: center;
+    }
+    #res{
+        font-size: 25px;
+        text-align: center;
+    }
+    #wal,#one{
+
+        padding:10px;
+        margin: 30px;
+        height:20px;
+
+    }
+   }
+</style>
+</head>
+<body>
+   <div id="h">
+   <div id="man">
+        <h2>FLAMES</h2>
+    </div>
+    <div id="i">
+    <div>
+        <input type="text" id="wal" placeholder="ENTER UR NAME">
+    </div>
+    <div>  
+        <input type="text" id="one" placeholder="ENTER UR CRUSH NAME">
+    </div>
+    </div>
+    <div>
+        <button type="submit">RELATIONSHIP</button>
+    </div>
+    <h2>
+    <div id="res">
+    </div>
+    </h2>
+    </div>
+    <script>
+        const button=document.querySelector('button')
+        button.addEventListener('click',cal)
+        function cal()
+        {
+        let a=document.getElementById("wal").value
+        let b=document.getElementById("one").value
+        let result=document.getElementById("res");
+        let e
+        let x=(a.split("")).sort()
+        let y=(b.split("")).sort()
+        for(let i=0;i<x.length;i++)
+        {
+            for(let j=0;j<y.length;j++)
+            {
+                if(x[i]==y[j])
+                {
+                  x.splice(i,1)
+                  i--
+                  y.splice(j,1)
+                  j--
+                }
+            }
+        }
+        let com=x.length+y.length
+        console.log(com)
+        let arr=['f','l','a','m','e','s']
+        let l=6,k=0
+        let rem=com%l
+        for(let i=0;i<5;i++)
+        {
+            k=rem%l
+            if(k==0)
+            {
+               k=l
+            }
+          console.log(k)
+          let t=arr.splice(k-1,1)
+          console.log(arr)
+          rem=com-(l-k)
+          l=l-1
+        }
+       switch(arr[0])
+       {
+        case 'f':
+            res="FRIENDSHIP";
+            break;
+        case 'l':
+            res="LOVE";
+            break;
+        case 'a':
+            res="AFFECTION";
+            break;
+        case 'm':
+            res="MARRIAGE";
+            break;
+        case 'e':
+            res="ENEMY";
+            break;
+        case 's':
+            res="SIBLINGS";
+            break;
+
+       }
+       result.innerHTML=res
+    }
+</script>
+</body>
+</html>
